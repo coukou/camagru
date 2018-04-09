@@ -1,0 +1,125 @@
+@import url('/resources/css/menu.css');
+@import url('/resources/css/header.css');
+
+* {
+	margin: 0;
+}
+
+body {
+	font-family: Roboto;
+}
+
+body.stop-scrolling {
+	height: 100%;
+	overflow: hidden;
+}
+
+header {
+	height: 55px;
+	line-height: 55px;
+	width: 100%;
+	color: black;
+}
+
+header .material-icons {
+	font-size: 28px;
+	vertical-align: middle;
+}
+
+#header-menu-button {
+	user-select: none;
+	cursor: pointer;
+}
+
+#header-account-button {
+	user-select: none;
+	cursor: pointer;
+}
+
+header #header-bar {
+	width: 100%;
+}
+
+header #header-bar.pinned {
+	position: fixed;
+	z-index: 25;
+	top: 0;
+	background: #333;
+	color: white;
+	transition: background ease .3s;
+}
+
+header #header-bar-container {
+	padding: 0 20px;
+	display: flex;
+	justify-content: space-between;
+	transition: background ease .3s;
+}
+
+header #logo {
+	font-family: "Pacifico";
+	font-size: 24px;
+}
+
+#card-container {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+.card {
+	margin: 20px 0;
+	background: #eee;
+	align-self: center;
+	width: 80vw;
+	height: 80vw;
+	max-height: 600px;
+	max-width: 600px;
+	border-radius: 10px;
+}
+
+.card-img-fake {
+	background: url('https://ih0.redbubble.net/image.512106907.5078/flat,800x800,075,f.u2.jpg') no-repeat;
+	background-position: 50%;
+	background-size: 100% auto;
+}
+
+.card-overlay {
+	width: calc(100% - 40px);
+	height: calc(100% - 40px);
+	border-radius: 10px;
+	padding: 20px;
+	background: linear-gradient(transparent, rgba(0, 0, 0, .4));
+	display: flex;
+	align-items: flex-end;
+	color: white;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.card-author {
+	flex-basis: 50%;
+	align-self: flex-start;
+	text-transform: uppercase;
+}
+
+.card-title {
+	flex-basis: 100%;
+	text-transform: uppercase;
+}
+
+.card-like-button {
+	align-self: flex-start;
+    width:  24px;
+	height: 24px;
+	-webkit-mask: url('/resources/images/like.svg') no-repeat 100% 100%;
+	mask: url('/resources/images/like.svg') no-repeat 100% 100%;
+	-webkit-mask-size: cover;
+	mask-size: cover;
+	background-color: white;
+	cursor: pointer;
+}
+
+.card-like-button:hover {
+	background-color: #ff2d2d;
+}
