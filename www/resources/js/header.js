@@ -3,6 +3,6 @@ window.addEventListener('scroll', () => {
 	const container = document.querySelector('#header-bar');
 	if (window.pageYOffset >= headerPinnedY)
 		container.classList.add('pinned');
-	if (window.pageYOffset < headerPinnedY)
+	if (window.pageYOffset === 0)
 		container.classList.remove('pinned');
 })

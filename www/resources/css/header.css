@@ -1,0 +1,19 @@
+#header-bar-container > * {
+	flex-basis: calc(100% / 3);
+}
+
+header a.button {
+	padding: 7px 25px;
+	margin-left: 10px;
+	border: 2px solid;
+	border-radius: 25px;
+	font-size: 12px;
+	text-transform: uppercase;
+	opacity: .6;
+	cursor: pointer;
+	user-select: none;
+}
+
+header a.button:hover {
+	opacity: .8;
+}
