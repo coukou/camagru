@@ -38,6 +38,7 @@ body.stop-scrolling {
 
 header {
 	line-height: 55px;
+	height: 55px;
 	width: 100%;
 	color: black;
 }
@@ -74,11 +75,22 @@ header #header-bar-container {
 	padding: 0 20px;
 	display: flex;
 	justify-content: space-between;
+	position: relative;
+	z-index: 1;
 }
 
 header #logo {
 	font-family: "Pacifico";
 	font-size: 24px;
+}
+
+.middle-container {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
 }
 
 .text-center {

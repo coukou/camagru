@@ -1,13 +1,7 @@
 <header>
 	<div id="header-bar">
 		<div id="header-bar-container">
-			<div>
-				<div id="menu"></div>
-				<div class="show-mobile">
-					<span id="header-menu-button" class="material-icons" onclick="toggleMenu('menu')">menu</span>
-				</div>
-			</div>
-			<div id="logo" class="text-center">
+			<div id="logo">
 				<a href="/">
 					Camagru
 				</a>
@@ -18,7 +12,8 @@
 					<a href="?page=signin">Sign in</a>
 					<a href="?page=signup">Sign up</a>
 				<?php } else { ?>
-					<a href="?panel=account">my account</a>
+					<a href="?panel=account">account</a>
+					<a href="?panel=snap">snap</a>
 					<a onclick="closeMenu('account-menu');logout()">logout</a>
 				<?php } ?>
 				</div>

@@ -7,6 +7,13 @@ if (isset($_GET['page'])) {
 	if ($page !== "")
 		$filename = "$page.php";
 }
+if (isset($_GET['panel'])) {
+	$page = htmlspecialchars($_GET['panel']);
+	if (!include("pages/panel/__restrict.php"))
+		$filename = "errors/500.php";
+	else if ($page !== "")
+		$filename = "panel/$page.php";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +38,9 @@ if (isset($_GET['page'])) {
 <body>
 	<?php include("components/header.php"); ?>
 	<?php
-		if (!file_exists("pages/$filename"))
+		if (preg_match("/__/", $filename))
+			include("pages/errors/500.php");
+		else if (!file_exists("pages/$filename"))
 			include("pages/errors/404.php");
 		else
 			include("pages/$filename");

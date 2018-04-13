@@ -9,7 +9,7 @@ if (isset($_SESSION['username']))
 	success-message="successfuly authed"
 	redirect-location="<?= isset($_GET['redirect']) ? $_GET['redirect'] : '/'; ?>"
 	>
-	<div id="sign-form-container">
+	<div id="sign-form-container" class="middle-container">
 		<input type="text" name="email" placeholder='email or username' />
 		<input type="password" name="password" placeholder='password' />
 		<input type="submit" class="show-desktop sign-button" value="sign-in"></a>

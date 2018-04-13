@@ -9,7 +9,7 @@ if (isset($_SESSION['username']))
 	success-message="account successfuly created"
 	redirect-location="?page=signin"
 	>
-	<div id="sign-form-container">
+	<div id="sign-form-container" class="middle-container">
 		<input type="text" name="email" placeholder='email' />
 		<input type="text" name="username" placeholder='username' />
 		<input type="password" name="password-1" placeholder='password'/>

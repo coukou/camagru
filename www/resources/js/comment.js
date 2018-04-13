@@ -24,6 +24,7 @@ function onCommentSubmit(form, post_id) {
 				const response = JSON.parse(this.responseText);
 				if (response.success) {
 					commentsContainer.prepend(createComment(response.data));
+					form.querySelector('textarea[name=comment]').value = "";
 				}
 			}
 		}
