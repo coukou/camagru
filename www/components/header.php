@@ -14,14 +14,19 @@
 			</div>
 			<div class="text-right">
 				<div id="account-menu">
+				<?php if (!isset($_SESSION['username'])) { ?>
 					<a href="?page=signin">Sign in</a>
-					<a onclick="toggleMenu('account-menu');toggleMenu('signup-popup', {r: 255, g: 255, b: 255, o: .5});">Sign up</a>
+					<a href="?page=signup">Sign up</a>
+				<?php } else { ?>
+					<a href="?panel=account">my account</a>
+					<a onclick="closeMenu('account-menu');logout()">logout</a>
+				<?php } ?>
 				</div>
 				<div class="show-mobile">
 					<span id="header-account-button" class="material-icons" onclick="toggleMenu('account-menu')">account_circle</span>
 				</div>
-				<?php include("components/signup.php"); ?>
 			</div>
 		</div>
+		<div id="header-notification"></div>
 	</div>
 </header>

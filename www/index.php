@@ -1,4 +1,6 @@
 <?php
+session_start();
+set_include_path($_SERVER['DOCUMENT_ROOT']);
 $filename = "index.php";
 if (isset($_GET['page'])) {
 	$page = htmlspecialchars($_GET['page']);
@@ -19,7 +21,12 @@ if (isset($_GET['page'])) {
 	<link rel="stylesheet" href="/resources/css/main.css">
 	<link rel="manifest" href="/manifest.json">
 	<script src="/resources/js/header.js"></script>
+	<script src="/resources/js/notification.js"></script>
 	<script src="/resources/js/menu.js"></script>
+	<script src="/resources/js/like.js"></script>
+	<script src="/resources/js/logout.js"></script>
+	<script src="/resources/js/posts.js"></script>
+	<script src="/resources/js/comment.js"></script>
 </head>
 <body>
 	<?php include("components/header.php"); ?>
