@@ -27,7 +27,7 @@ if (!isset($_GET['id']) || !($post = $db->getPostById($_GET['id'])))
 	</form>
 </div>
 <?php } else { ?>
-<a href='?page=signin&redirect=<?= urlencode($_SERVER[REQUEST_URI]); ?>' class='button'>signin to comment this post</a>
+<a href="?page=signin&redirect=<?= urlencode($_SERVER['REQUEST_URI']); ?>" class="button">signin to comment this post</a>
 <?php } ?>
 <div id="comments-container" class="container">
 	<?php foreach ($db->getPostComments($_GET['id']) as $comment) { ?>

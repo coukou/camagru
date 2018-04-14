@@ -12,7 +12,7 @@
 					<a href="?page=signin">Sign in</a>
 					<a href="?page=signup">Sign up</a>
 				<?php } else { ?>
-					<a href="?panel=account">account</a>
+					<a href="?panel=account"><?= $_SESSION['username']; ?></a>
 					<a href="?panel=snap">snap</a>
 					<a onclick="closeMenu('account-menu');logout()">logout</a>
 				<?php } ?>

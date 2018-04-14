@@ -19,15 +19,17 @@ if (count($errors) === 0)
 	$password = hash('sha256', htmlspecialchars($_POST['password']));
 	$db = new Database();
 	if (filter_var($email, FILTER_VALIDATE_EMAIL))
-	$user = $db->getUserByEmail($email);
+		$user = $db->getUserByEmail($email);
 	else
-	$user = $db->getUserByUsername($email);
+		$user = $db->getUserByUsername($email);
 	if ($user == null)
-	$errors[] = array('field' => 'email', 'message' => 'invalid email / username');
+		$errors[] = array('field' => 'email', 'message' => 'invalid email / username');
 	if (count($errors) === 0)
 	{
 		if ($password !== $user['password'])
-		$errors[] = array('field' => 'password', 'message' => 'password is invalid');
+			$errors[] = array('field' => 'password', 'message' => 'password is invalid');
+		else if ($user['activated'] == 0)
+			$errors[] = array('field' => 'email', 'message' => 'you must activate your account');
 	}
 }
 if (count($errors) > 0)

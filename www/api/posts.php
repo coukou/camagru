@@ -11,7 +11,7 @@ if (isset($_POST['from']))
 	{
 		$post['author'] = $db->getUserById($post['user_id'])['username'];
 		$post['likes'] =  $db->countPostLikes($post['id']);
-		$post['liked'] = $db->doUserLikePost($_SESSION['user_id'], $post['id']);
+		$post['liked'] = isset($_SESSION['user_id']) ? $db->doUserLikePost($_SESSION['user_id'], $post['id']) : false;
 	}
 	print(json_encode(array('success' => true, 'posts' => $posts)));
 }

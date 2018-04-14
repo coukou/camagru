@@ -12,6 +12,7 @@ if (isset($_SESSION['username']))
 	<div id="sign-form-container" class="middle-container">
 		<input type="text" name="email" placeholder='email or username' />
 		<input type="password" name="password" placeholder='password' />
+		<a href="?page=forget">forgot password ? click here!</a>
 		<input type="submit" class="show-desktop sign-button" value="sign-in"></a>
 	</div>
 	<div id="mobile-buttons" class="show-mobile">

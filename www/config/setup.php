@@ -12,6 +12,7 @@ $db = new PDO($NODB_DSN, $DB_USER, $DB_PASSWORD);
 $db->exec("CREATE DATABASE IF NOT EXISTS `$DB_DBNAME`;");
 
 $db = new Database();
+$db->exec(file_get_contents('../resources/sql/create_links_table.sql'));
 $db->exec(file_get_contents('../resources/sql/create_user_table.sql'));
 $db->exec(file_get_contents('../resources/sql/create_comments_table.sql'));
 $db->exec(file_get_contents('../resources/sql/create_posts_table.sql'));

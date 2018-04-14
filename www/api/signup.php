@@ -1,6 +1,7 @@
 <?php
 set_include_path($_SERVER['DOCUMENT_ROOT']);
 require_once('includes/Database.class.php');
+require_once('includes/sendmail.php');
 
 $fields = array('email', 'username', 'password-1', 'password-2');
 $errors = array();
@@ -36,7 +37,12 @@ if (count($errors) === 0)
 			$errors[] = array('field' => 'username', 'message' => 'username already taken');
 		if (count($errors) === 0)
 		{
+			$activate_code = uniqid("camagru_");
+			$link = "/?page=activate&code=$activate_code&email=$email";
+			$db->addLink($link);
 			$db->addUser($email, $username, $password1);
+			$link = $_SERVER['HTTP_HOST'] . $link;
+			sendmail($email, "Camagru activate link", "<html><body><a href=\"http://$link\">click here to activate your account</a></html></body>");
 		}
 	}
 }
