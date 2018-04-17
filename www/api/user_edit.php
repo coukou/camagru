@@ -12,6 +12,10 @@ if ($_GET['action'] == 'password')
 	$fields = array('password', 'password-1', 'password-2');
 if ($_GET['action'] == 'email')
 	$fields = array('email', 'password');
+if ($_GET['action'] == 'delete')
+	$fields = array('password');
+if ($_GET['action'] == 'notification')
+	$fields = array();
 $errors = array();
 foreach ($fields as $field) {
 	if (!isset($_POST[$field]))
@@ -22,10 +26,13 @@ foreach ($fields as $field) {
 if (count($errors) === 0)
 {
 	$db = new Database();
-	$password = hash('sha256', $_POST['password']);
-	if ($db->getUserById($_SESSION['user_id'])['password'] !== $password)
-		$errors[] = array('field' => 'password', 'message' => 'invalid password');
-	else
+	if (array_key_exists('password', $fields))
+	{
+		$password = hash('sha256', $_POST['password']);
+		if ($db->getUserById($_SESSION['user_id'])['password'] !== $password)
+			$errors[] = array('field' => 'password', 'message' => 'invalid password');
+	}
+	if (count($errors) === 0)
 	{
 		if ($_GET['action'] == 'username')
 		{
@@ -65,7 +72,24 @@ if (count($errors) === 0)
 				return print(json_encode(array('success' => true)));
 			}
 			else
-				$errors[] = array('field' => 'password-2', 'message' => 'password doesn\'t match');
+			$errors[] = array('field' => 'password-2', 'message' => 'password doesn\'t match');
+		}
+		if ($_GET['action'] == 'delete')
+		{
+			if ($db->deleteUser($_SESSION['user_id']))
+			{
+				session_destroy();
+				return print(json_encode(array('success' => true)));
+			}
+		}
+		if ($_GET['action'] == 'notification')
+		{
+			$value = $_SESSION['notification'] ? 0 : 1;
+			if ($db->updateUserNotification($_SESSION['user_id'], $value))
+			{
+				$_SESSION['notification'] = $value;
+				return print(json_encode(array('success' => true, 'enabled' => $value)));
+			}
 		}
 	}
 }

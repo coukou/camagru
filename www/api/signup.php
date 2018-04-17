@@ -42,7 +42,7 @@ if (count($errors) === 0)
 			$db->addLink($link);
 			$db->addUser($email, $username, $password1);
 			$link = $_SERVER['HTTP_HOST'] . $link;
-			sendmail($email, "Camagru activate link", "<html><body><a href=\"http://$link\">click here to activate your account</a></html></body>");
+			sendmail($email, "Camagru activate link", "<a href=\"http://$link\">click here to activate your account</a>");
 		}
 	}
 }

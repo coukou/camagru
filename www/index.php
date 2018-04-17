@@ -34,6 +34,7 @@ if (isset($_GET['panel'])) {
 	<script src="/resources/js/logout.js"></script>
 	<script src="/resources/js/posts.js"></script>
 	<script src="/resources/js/comment.js"></script>
+	<script src="/resources/js/toggleNotification.js"></script>
 </head>
 <body>
 	<?php include("components/header.php"); ?>

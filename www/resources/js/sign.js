@@ -17,7 +17,8 @@ window.addEventListener('load', () => {
 		form.childNodes.forEach((c) => {
 			if (c.type === 'submit')
 				return;
-			c.style = undefined;
+			if (c.tagName === 'SPAN')
+				c.style = undefined;
 			data.append(c.name, c.value);
 		})
 		const req = new XMLHttpRequest();

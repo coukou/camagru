@@ -49,9 +49,30 @@ class Database extends PDO {
 		return $stmt->rowCount() > 0;
 	}
 
-	public function deleteUser($email) {
-		$stmt = $this->prepare("DELETE FROM `users` WHERE `email`=?");
-		$stmt->execute(array($email));
+	public function deleteUser($user_id) {
+		$stmt = $this->prepare("DELETE FROM `users` WHERE `id` = ?");
+		$stmt->execute(array($user_id));
+		$this->deleteUserPosts($user_id);
+		$this->deleteUserLikes($user_id);
+		$this->deleteUserComments($user_id);
+		return $stmt->rowCount() > 0;
+	}
+
+	public function deleteUserPosts($user_id) {
+		$stmt = $this->prepare("DELETE FROM `posts` WHERE `user_id` = ?");
+		$stmt->execute(array($user_id));
+		return $stmt->rowCount() > 0;
+	}
+
+	public function deleteUserLikes($user_id) {
+		$stmt = $this->prepare("DELETE FROM `users_likes` WHERE `user_id` = ?");
+		$stmt->execute(array($user_id));
+		return $stmt->rowCount() > 0;
+	}
+
+	public function deleteUserComments($user_id) {
+		$stmt = $this->prepare("DELETE FROM `comments` WHERE `user_id` = ?");
+		$stmt->execute(array($user_id));
 		return $stmt->rowCount() > 0;
 	}
 
@@ -137,4 +158,10 @@ class Database extends PDO {
 		return $stmt->rowCount() > 0;
 	}
 
+	public function updateUserNotification($user_id, $value) {
+		$user = $this->getUserById($user_id);
+		$stmt = $this->prepare("UPDATE `users` SET `notification` = ? WHERE `id` = ?");
+		$stmt->execute(array($value, $user_id));
+		return $stmt->rowCount() > 0;
+	}
 }

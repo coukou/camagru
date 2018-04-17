@@ -1,4 +1,4 @@
-INSERT INTO `users`(`email`, `username`, `password`) VALUES ('coucou@coucou.com', 'coucou', 'coucou');
+INSERT INTO `users`(`email`, `username`, `password`, `activated`) VALUES ('spopieul@student.42.fr', 'coucou', '110812f67fa1e1f0117f6f3d70241c1a42a7b07711a93c2477cc516d9042f9db', '1');
 INSERT INTO `posts`(`user_id`, `title`, `date`, `img_id`) VALUES (1, 'fortnite le bon jeu', 1523548806, 'here_the_img_id');
 INSERT INTO `posts`(`user_id`, `title`, `date`, `img_id`) VALUES (1, 'fortnite le bon jeu', 1523548806, 'here_the_img_id');
 INSERT INTO `posts`(`user_id`, `title`, `date`, `img_id`) VALUES (1, 'fortnite le bon jeu', 1523548806, 'here_the_img_id');

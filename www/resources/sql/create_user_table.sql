@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS `users`
 	`username` varchar(16) NOT NULL,
 	`password` varchar(64) NOT NULL,
 	`activated` ENUM('0', '1') DEFAULT '0',
-	`notification` ENUM('0', '1') DEFAULT '0',
+	`notification` ENUM('0', '1') DEFAULT '1',
 	PRIMARY KEY (`id`)
 );

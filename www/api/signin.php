@@ -40,5 +40,6 @@ else
 	$_SESSION['user_id'] = $user['id'];
 	$_SESSION['username'] = $user['username'];
 	$_SESSION['email'] = $user['email'];
+	$_SESSION['notification'] = $user['notification'];
 	echo json_encode(array('success' => true));
 }
