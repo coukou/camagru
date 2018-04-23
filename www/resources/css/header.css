@@ -41,3 +41,51 @@ header a.button {
 header a.button:hover {
 	opacity: .8;
 }
+
+header {
+	line-height: 55px;
+	height: 55px;
+	width: 100%;
+	color: black;
+}
+
+header .material-icons {
+	font-size: 28px;
+	vertical-align: middle;
+}
+
+#header-menu-button {
+	user-select: none;
+	cursor: pointer;
+}
+
+#header-account-button {
+	user-select: none;
+	cursor: pointer;
+}
+
+header #header-bar {
+	width: 100%;
+	transition: background .3s;
+}
+
+header #header-bar.pinned {
+	position: fixed;
+	z-index: 25;
+	top: 0;
+	background: #111;
+	color: white;
+}
+
+header #header-bar-container {
+	padding: 0 20px;
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	z-index: 1;
+}
+
+header #logo {
+	font-family: "Pacifico";
+	font-size: 24px;
+}

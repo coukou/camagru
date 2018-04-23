@@ -21,7 +21,7 @@ if (isset($_SESSION['username']) && isset($_POST['comment']) && isset($_POST['po
 					sendmail(
 						$post_author['email'],
 						'someone commented your post',
-						sprintf('<a href="http://%s?page=post&id=%s">%s</a> post has been commented by %s', $_SERVER['HTTP_HOST'], $post['id'], $post['title'], $_SESSION['username'])
+						sprintf('<a href="http://%s?page=post&id=%s">one of your post</a> has been commented by %s', $_SERVER['HTTP_HOST'], $post['id'], $_SESSION['username'])
 					);
 				}
 				return print(json_encode(array('success' => true, 'data' => array(

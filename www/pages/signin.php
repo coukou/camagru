@@ -1,4 +1,5 @@
 <?php
+$disable_footer = true;
 if (isset($_SESSION['username']))
 	return include('pages/errors/500.php');
 ?>

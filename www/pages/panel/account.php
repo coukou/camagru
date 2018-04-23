@@ -1,3 +1,4 @@
+<?php $disable_footer = true; ?>
 <div class="middle-container">
 	<a href="?panel=edit/username" class='button'>Change username</a>
 	<a href="?panel=edit/password" class='button'>Change password</a>

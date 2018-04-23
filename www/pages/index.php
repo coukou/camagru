@@ -12,9 +12,10 @@ $posts = $db->getPosts();
 				<span class="card-like-count"><?= $db->countPostLikes($post['id']); ?></span>
 				<span class="card-like-button <?= $db->doUserLikePost($_SESSION['user_id'], $post['id']) ? 'liked' : ''; ?>"></span>
 			</div>
-			<span class="card-title"><?= $post['title']; ?></span>
 		</div>
 	</a>
 	<?php } ?>
 </div>
+<?php if ($db->getPostsCount() > 5) { ?>
 <a id="load-more-button" class='button' onclick="loadPosts(this)">Load More</a>
+<?php } ?>

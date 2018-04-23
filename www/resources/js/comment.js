@@ -1,5 +1,5 @@
 function createComment(data) {
-	const comment = document.createElement('div');
+	var comment = document.createElement('div');
 	comment.className = 'comment';
 	comment.innerHTML = `
 	<div class="comment-data">
@@ -12,16 +12,16 @@ function createComment(data) {
 }
 
 function onCommentSubmit(form, post_id) {
-	const message = form.querySelector('textarea[name=comment]').value;
-	const commentsContainer = document.getElementById('comments-container');
-	const data = new FormData();
+	var message = form.querySelector('textarea[name=comment]').value;
+	var commentsContainer = document.getElementById('comments-container');
+	var data = new FormData();
 	data.append('post_id', post_id);
 	data.append('comment', message);
-	const req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
 			if (this.status === 200) {
-				const response = JSON.parse(this.responseText);
+				var response = JSON.parse(this.responseText);
 				if (response.success) {
 					commentsContainer.prepend(createComment(response.data));
 					form.querySelector('textarea[name=comment]').value = "";

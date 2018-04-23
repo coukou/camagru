@@ -1,18 +1,18 @@
 function closeMenu(element_id) {
-	const element = document.getElementById(element_id);
+	var element = document.getElementById(element_id);
 	if (!element.classList.contains('opened'))
 		return ;
-	const overlay = document.getElementById('menu-overlay');
+	var overlay = document.getElementById('menu-overlay');
 	element.classList.remove('opened');
 	document.body.classList.remove('stop-scrolling');
 	element.parentElement.removeChild(overlay);
 }
 
 function openMenu(element_id, color = '#0008') {
-	const element = document.getElementById(element_id);
+	var element = document.getElementById(element_id);
 	if (element.classList.contains('opened'))
 		return ;
-	const overlay = document.createElement('div');
+	var overlay = document.createElement('div');
 	overlay.setAttribute('id', 'menu-overlay');
 	overlay.style.background = color;
 	element.classList.add('opened');
@@ -24,7 +24,7 @@ function openMenu(element_id, color = '#0008') {
 }
 
 function toggleMenu(element_id, color) {
-	const element = document.getElementById(element_id);
+	var element = document.getElementById(element_id);
 	if (!element.classList.contains('opened')) {
 		openMenu(element_id, color);
 	} else {

@@ -12,15 +12,14 @@ if (!isset($_GET['id']) || !($post = $db->getPostById($_GET['id'])))
 				<span class="card-like-count"><?= $db->countPostLikes($post['id']); ?></span>
 				<span onclick="toggleLike(this, <?= $post['id']; ?>)" class="card-like-button <?= $db->doUserLikePost($_SESSION['user_id'], $post['id']) ? 'liked' : ''; ?>"></span>
 			</div>
-			<span class="card-title"><?= $post['title']; ?></span>
 		</div>
 	</div>
 </div>
 <?php if (isset($_SESSION['username'])) { ?>
+<?php if ($_SESSION['user_id'] === $post['user_id']) { ?>
+<input class='button' type="submit" onclick="deletePost(<?= $post['id']; ?>)" style="background-color: red;" value="Delete post" />
+<?php } ?>
 <div class="container">
-	<!-- <div class="comment-data" >
-
-	</div> -->
 	<form onsubmit="return onCommentSubmit(this, <?= $post['id']; ?>)">
 		<textarea name="comment" rows="10" class="comment-input" placeholder="Wow you look so beautiful..."></textarea>
 		<input class='button' type="submit" value="Send Comment" />

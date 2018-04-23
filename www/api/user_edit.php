@@ -37,14 +37,18 @@ if (count($errors) === 0)
 		if ($_GET['action'] == 'username')
 		{
 			$username = htmlspecialchars($_POST['username']);
-			if (!$db->getUserByUsername($username))
+			if (strlen($username) > 16)
+				$errors[] = array('field' => 'username', 'message' => 'username can\'t exceed 16 characters');
+			if (strlen($username) < 4)
+				$errors[] = array('field' => 'username', 'message' => 'username must be atleast 4 characters long');
+			if ($db->getUserByUsername($username))
+				$errors[] = array('field' => 'username', 'message' => 'username already taken');
+			if (count($errors) == 0)
 			{
 				$_SESSION['username'] = $username;
 				$db->changeUserUsername($_SESSION['user_id'], $username);
 				return print(json_encode(array('success' => true)));
 			}
-			else
-				$errors[] = array('field' => 'username', 'message' => 'username already taken');
 		}
 		if ($_GET['action'] == 'email')
 		{
@@ -65,14 +69,19 @@ if (count($errors) === 0)
 		}
 		if ($_GET['action'] == 'password')
 		{
-			if ($_POST['password-1'] === $_POST['password-2'])
+			if (strlen($password1) < 4)
+				$errors[] = array('field' => 'password-1', 'message' => 'password must be atleast 4 characters long');
+			if (count($errors) == 0)
 			{
-				$password = htmlspecialchars($_POST['password-1']);
-				$db->changeUserPassword($_SESSION['user_id'], $password);
-				return print(json_encode(array('success' => true)));
+				if ($_POST['password-1'] === $_POST['password-2'])
+				{
+					$password = htmlspecialchars($_POST['password-1']);
+					$db->changeUserPassword($_SESSION['user_id'], $password);
+					return print(json_encode(array('success' => true)));
+				}
+				else
+					$errors[] = array('field' => 'password-2', 'message' => 'password doesn\'t match');
 			}
-			else
-			$errors[] = array('field' => 'password-2', 'message' => 'password doesn\'t match');
 		}
 		if ($_GET['action'] == 'delete')
 		{

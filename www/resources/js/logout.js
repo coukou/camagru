@@ -1,9 +1,9 @@
 function logout() {
-	const req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
 			if (this.status === 200) {
-				let response = JSON.parse(this.responseText);
+				var response = JSON.parse(this.responseText);
 				if (response.success === false)
 					showNotification('unable to logout', {time: 2500, bg: 'red'})
 				else

@@ -9,12 +9,12 @@ $NODB_DSN = preg_replace("/dbname=(\w+)/", "dbname=", $DB_DSN);
 
 $DB_DBNAME = $DB_DBNAME[1];
 $db = new PDO($NODB_DSN, $DB_USER, $DB_PASSWORD);
+$db->exec("DROP DATABASE `$DB_DBNAME`;");
 $db->exec("CREATE DATABASE IF NOT EXISTS `$DB_DBNAME`;");
 
 $db = new Database();
-$db->exec(file_get_contents('../resources/sql/create_links_table.sql'));
-$db->exec(file_get_contents('../resources/sql/create_user_table.sql'));
-$db->exec(file_get_contents('../resources/sql/create_comments_table.sql'));
-$db->exec(file_get_contents('../resources/sql/create_posts_table.sql'));
-$db->exec(file_get_contents('../resources/sql/create_users_likes_table.sql'));
-$db->exec(file_get_contents('../resources/sql/mock_posts.sql'));
+$db->exec(file_get_contents('resources/sql/create_links_table.sql'));
+$db->exec(file_get_contents('resources/sql/create_user_table.sql'));
+$db->exec(file_get_contents('resources/sql/create_comments_table.sql'));
+$db->exec(file_get_contents('resources/sql/create_posts_table.sql'));
+$db->exec(file_get_contents('resources/sql/create_users_likes_table.sql'));

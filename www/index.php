@@ -1,6 +1,10 @@
 <?php
 session_start();
 set_include_path($_SERVER['DOCUMENT_ROOT']);
+if (!file_exists('__database_installed')) {
+	include("config/setup.php");
+	file_put_contents('__database_installed', 'coucou toi');
+}
 $filename = "index.php";
 if (isset($_GET['page'])) {
 	$page = htmlspecialchars($_GET['page']);
@@ -26,8 +30,9 @@ if (isset($_GET['panel'])) {
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="/resources/css/main.css">
-	<link rel="manifest" href="/manifest.json">
+	<link rel="manifest" href="/resources/manifest.json">
 	<script src="/resources/js/header.js"></script>
+	<script src="/resources/js/delete_post.js"></script>
 	<script src="/resources/js/notification.js"></script>
 	<script src="/resources/js/menu.js"></script>
 	<script src="/resources/js/like.js"></script>
@@ -46,6 +51,6 @@ if (isset($_GET['panel'])) {
 		else
 			include("pages/$filename");
 	?>
-	<?php include("components/footer.php"); ?>
+	<?php if (!isset($disable_footer)) include("components/footer.php"); ?>
 </body>
 </html>

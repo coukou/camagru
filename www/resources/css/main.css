@@ -36,54 +36,6 @@ body.stop-scrolling {
 	overflow: hidden;
 }
 
-header {
-	line-height: 55px;
-	height: 55px;
-	width: 100%;
-	color: black;
-}
-
-header .material-icons {
-	font-size: 28px;
-	vertical-align: middle;
-}
-
-#header-menu-button {
-	user-select: none;
-	cursor: pointer;
-}
-
-#header-account-button {
-	user-select: none;
-	cursor: pointer;
-}
-
-header #header-bar {
-	width: 100%;
-	transition: background .3s;
-}
-
-header #header-bar.pinned {
-	position: fixed;
-	z-index: 25;
-	top: 0;
-	background: #111;
-	color: white;
-}
-
-header #header-bar-container {
-	padding: 0 20px;
-	display: flex;
-	justify-content: space-between;
-	position: relative;
-	z-index: 1;
-}
-
-header #logo {
-	font-family: "Pacifico";
-	font-size: 24px;
-}
-
 .middle-container {
 	position: fixed;
 	left: 50%;
@@ -108,6 +60,7 @@ header #logo {
 	border: 2px solid #0002;
 	outline: none;
 }
+
 .container {
 	margin-top: 10px;
 	display: flex;
@@ -115,6 +68,66 @@ header #logo {
 	margin: auto;
 	width: 90vw;
 	max-width: 600px;
+}
+
+#uploads-container {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	margin: 20px auto 0 auto;
+	max-height: 600px;
+	min-width: 200px;
+	max-width: 600px;
+	flex: 1;
+	overflow-y: auto;
+}
+
+#filters-container {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	max-width: 600px;
+	overflow-x: auto;
+}
+
+.separator {
+	height: 2px;
+	margin-top: 20px;
+	background: #aaa;
+}
+
+.upload-card {
+	margin: 0px 10px 10px 10px;
+	background: black;
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	background-position: 50%;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
+.filter-card {
+	margin-right: 10px;
+	background: black;
+	min-width: 100px;
+	min-height: 100px;
+	border-radius: 10px;
+	background-position: 50%;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
+.snap-container {
+	margin-top: 10px;
+	display: flex;
+	flex-direction: row;
+	margin: auto;
+	width: 90vw;
+	max-width: 920px;
+	flex-wrap: wrap;
 }
 
 .comment {
@@ -138,13 +151,26 @@ header #logo {
 
 .card {
 	margin: 20px 0;
-	background: #eee;
+	background: black;
 	width: 100%;
 	height: 90vw;
 	max-height: 600px;
 	border-radius: 10px;
 	background-position: 50%;
 	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+
+.card {
+	margin: 20px 0;
+	background: black;
+	width: 100%;
+	height: 90vw;
+	max-height: 600px;
+	border-radius: 10px;
+	background-position: 50%;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
 }
 
 .card-overlay {
@@ -164,11 +190,6 @@ header #logo {
 	flex-basis: 50%;
 	font-size: 13px;
 	align-self: flex-start;
-	text-transform: uppercase;
-}
-
-.card-title {
-	flex-basis: 100%;
 	text-transform: uppercase;
 }
 
@@ -220,4 +241,9 @@ header #logo {
 input.button {
 	border: none;
 	outline: none;
+}
+
+input.button.disabled {
+	cursor: default;
+	background: grey;
 }

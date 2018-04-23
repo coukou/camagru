@@ -1,7 +1,7 @@
-let loadMoreFrom = 6;
+var loadMoreFrom = 6;
 
 function createPost(data) {
-	const post = document.createElement('a');
+	var post = document.createElement('a');
 	post.id = `card-${data.id}`;
 	post.className = 'card';
 	post.href = `?page=post&id=${data.id}`;
@@ -13,21 +13,20 @@ function createPost(data) {
 			<span class="card-like-count">${data.likes}</span>
 			<span class="card-like-button ${data.liked ? 'liked' : ''}"></span>
 		</div>
-		<span class="card-title">${data.title}</span>
 	</div>
 	`;
 	return post;
 }
 
 function loadPosts(button) {
-	const data = new FormData();
-	const cardsContainer = document.getElementById('card-container');
+	var data = new FormData();
+	var cardsContainer = document.getElementById('card-container');
 	data.append('from', loadMoreFrom);
-	const req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
 			if (this.status === 200) {
-				let response = JSON.parse(this.responseText);
+				var response = JSON.parse(this.responseText);
 				if (response.success === false)
 					document.removeChild(button);
 				else {

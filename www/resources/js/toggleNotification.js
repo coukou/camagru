@@ -1,10 +1,10 @@
 function toggleNotification(elem) {
-	const data = new FormData();
-	const req = new XMLHttpRequest();
+	var data = new FormData();
+	var req = new XMLHttpRequest();
 	req.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
 			if (this.status === 200) {
-				const response = JSON.parse(this.responseText);
+				var response = JSON.parse(this.responseText);
 				if (response.success) {
 					showNotification(
 						`Notification ${response.enabled ? 'enabled' : 'disabled'}`, {

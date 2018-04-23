@@ -5,6 +5,7 @@ class Database extends PDO {
 	public function __construct() {
 		global $DB_DSN, $DB_USER, $DB_PASSWORD;
 		parent::__construct($DB_DSN, $DB_USER, $DB_PASSWORD);
+		$this->setAttribute(PDO::ERRMODE_EXCEPTION, 1);
 	}
 
 	public function getUserByEmail($email) {
@@ -76,9 +77,22 @@ class Database extends PDO {
 		return $stmt->rowCount() > 0;
 	}
 
-	public function getPosts($from = 0) {
-		$stmt = $this->prepare("SELECT * FROM `posts` WHERE `id` >= ? LIMIT 5");
-		$stmt->execute(array($from));
+	public function getPostsCount() {
+		$stmt = $this->prepare("SELECT count(*) FROM `posts`");
+		$stmt->execute(array());
+		return $stmt->fetchColumn();
+	}
+
+	public function getPosts($offset = 0) {
+		$offset = intval($offset);
+		$stmt = $this->prepare("SELECT * FROM `posts` ORDER BY `date` DESC LIMIT $offset, 5");
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+	public function getUserPosts($user_id) {
+		$stmt = $this->prepare("SELECT * FROM `posts` WHERE `user_id` = ?");
+		$stmt->execute(array($user_id));
 		return $stmt->fetchAll();
 	}
 
@@ -88,9 +102,21 @@ class Database extends PDO {
 		return $stmt->fetch();
 	}
 
+	public function addUpload($user_id, $img_id) {
+		$stmt = $this->prepare("INSERT INTO `uploads`(`user_id`, `img_id`) VALUES (?,?)");
+		$stmt->execute(array($user_id, $img_id));
+		return $stmt->rowCount() > 0;
+	}
+
 	public function deletePost($id) {
 		$stmt = $this->prepare("DELETE FROM `posts` WHERE `id` = ?");
 		$stmt->execute(array($id));
+		return $stmt->rowCount() > 0;
+	}
+
+	public function addPost($user_id, $img_id) {
+		$stmt = $this->prepare("INSERT INTO `posts`(`user_id`, `date`, `img_id`) VALUES(?,?,?)");
+		$stmt->execute(array($user_id, time(), $img_id));
 		return $stmt->rowCount() > 0;
 	}
 
@@ -98,6 +124,12 @@ class Database extends PDO {
 		$stmt = $this->prepare("SELECT * FROM `comments` WHERE `post_id` = ? ORDER BY `date` DESC");
 		$stmt->execute(array($id));
 		return $stmt->fetchAll();
+	}
+
+	public function getPostByImgId($img_id) {
+		$stmt = $this->prepare("SELECT * FROM `posts` WHERE `img_id` = ?");
+		$stmt->execute(array($img_id));
+		return $stmt->fetch();
 	}
 
 	public function countPostLikes($id) {

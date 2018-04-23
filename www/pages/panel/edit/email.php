@@ -1,3 +1,4 @@
+<?php $disable_footer = true; ?>
 <script src="/resources/js/sign.js"></script>
 <form
 	id="sign-form"
