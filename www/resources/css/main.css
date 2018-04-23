@@ -178,7 +178,6 @@ body.stop-scrolling {
 	height: calc(100% - 40px);
 	border-radius: 10px;
 	padding: 20px;
-	background: linear-gradient(transparent, rgba(0, 0, 0, .4));
 	display: flex;
 	align-items: flex-end;
 	color: white;

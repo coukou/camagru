@@ -13,7 +13,10 @@ function setFilter(filter, id) {
 	filterImg.src = res[1];
 	filterImg.setAttribute('filter-id', id);
 	document.getElementById("snap").classList.remove('disabled');
-	drawFilterImg(document.getElementById('preview').getContext('2d'));
+	context = document.getElementById('preview').getContext('2d');
+	var height = 3 * context.canvas.height / 4;
+	context.drawImage(document.getElementById('uploaded-img'), 0, (context.canvas.height - height) / 2, context.canvas.width, height);
+	drawFilterImg(context);
 }
 
 function drawPreviewImg(event) {
